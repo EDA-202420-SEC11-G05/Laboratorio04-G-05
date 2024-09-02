@@ -12,7 +12,7 @@ def compare_from_tests(element1, element2):
         return 1
     return -1
 
-@pytest.mark.skip(reason="No implementado aun")
+
 def test_new_list():
     lista = setup_tests()
     assert lista["first"] is None
@@ -20,7 +20,7 @@ def test_new_list():
     assert lista["size"] == 0
 
 
-@pytest.mark.skip(reason="No implementado aun")
+
 def test_add_first():
     lista = setup_tests()
 
@@ -32,7 +32,7 @@ def test_add_first():
     assert lista["first"]["info"] == 3
 
 
-@pytest.mark.skip(reason="No implementado aun")
+
 def test_add_last():
     lista = setup_tests()
 
@@ -46,7 +46,7 @@ def test_add_last():
     assert lista["last"]["info"] == 3
 
 
-@pytest.mark.skip(reason="No implementado aun")
+
 def test_is_empty():
     lista = setup_tests()
 
