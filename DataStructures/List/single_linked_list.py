@@ -33,8 +33,8 @@ def add_last(lista, elemento):
     new_nodo =node.new_single_node(elemento)
 
     if lista["size"] == 0:
-        new_nodo['first'] = new_nodo
-        new_nodo['last'] = new_nodo
+        lista['first'] = new_nodo
+        lista['last'] = new_nodo
         return lista
     
     else:
