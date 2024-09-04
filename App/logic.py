@@ -105,7 +105,17 @@ def get_best_avg_rating(catalog):
     """
     Retorna el libro con el mayor rating promedio (avg_rating) de los datos
     """
-    # TODO Implementar la función para obtener el libro con el mayor avg_rating
+    current = catalog['books']['first']
+    best = current['info']
+    high = float(best['average_rating'])
+    while current is not None:
+        book = current['info']
+        rating = float(book['average_rating'])
+        if rating > high:
+            best = book
+            high = rating
+        current = current['next']
+    return best        
 
 def get_books_by_author(catalog, author_name):
     """
@@ -128,14 +138,24 @@ def get_book_info_by_book_id(catalog, book_id):
     return None
 
 def get_first_last_books(catalog, top):
-    # TODO Implementar la función que retorne dos listas con los n primeros y ultimos libros cargados
+    size = lt.size(catalog['books'])
+    first_elems = lt.sub_list(catalog['books'], 0, top)
+    last_elems = lt.sub_list(catalog['books'], max(0, size - top), top)
     return first_elems, last_elems
 
 def count_books_by_tag(catalog, tag):
     """
     Retorna el conteo de libros que tienen asociado el tag solicitado.
     """
-    # TODO Implementar la función de conteo de libros por tag
+    count = 0
+    current = catalog['book_tags']['first']
+    while current is not None:
+        book_tag = current['info']
+        tag_id = tag['tag_id']
+        if book_tag['tag_id'] == tag_id:
+            count += 1
+        current = current['next']
+    return count
 
 # Funciones para agregar informacion al catalogo
 
@@ -251,7 +271,11 @@ def compare_tag_names(name, tag):
     return -1
 
 def compare_book_ids(id, book):
-# TODO Implementar la función de comparación por book id
+    if int(id) == int(book['goodreads_book_id']):
+        return 0
+    elif int(id) > int(book['goodreads_book_id']):
+        return 1
+    return -1
 
 
 # funciones para comparar elementos dentro de algoritmos de ordenamientos
